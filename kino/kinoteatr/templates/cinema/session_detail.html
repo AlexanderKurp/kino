@@ -1,0 +1,16 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Home - My Cinema Site{% endblock %}
+
+{% block content %}
+    <h1>{{ session.movie.title }}</h1>
+    <p>Время: {{ session.time }}</p>
+    <p>Зал: {{ session.hall }}</p>
+    <h2>Забронировать билет</h2>
+    <form method="post" action="{% url 'book_ticket' session.pk %}">
+        {% csrf_token %}
+        <label for="seat">Место:</label>
+        <input type="text" id="seat" name="seat">
+        <button type="submit">Забронировать</button>
+    </form>
+{% endblock %}

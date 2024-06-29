@@ -1,0 +1,22 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Home - My Cinema Site{% endblock %}
+
+{% block content %}
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+    <p>Жанр: {{ movie.genre.name }}</p>
+    <p>Режиссер: {{ movie.director.name }}</p>
+    <p>Актеры:
+        {% for actor in movie.actors.all %}
+        {{ actor.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <img src="{{ movie.poster.url }}" alt="{{ movie.title }}">
+    <h2>Сеансы</h2>
+    <ul>
+        {% for session in movie.session_set.all %}
+        <li><a href="{% url 'session_detail' session.pk %}">{{ session.time }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
