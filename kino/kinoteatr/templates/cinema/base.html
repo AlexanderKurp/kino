@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,20 @@
 <body>
 <header>
     <div class="header-content">
-        <li><a href="{% url 'index' %}"><h1>Кинотеатр</h1></a></li>
+        <a href="{% url 'index' %}"><h1>Кинотеатр</h1></a>
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'index' %}">Фильмы</a></li>
+                <li><a href="/movies">Фильмы</a></li>
                 <li><a href="{% url 'index' %}">Режиссеры</a></li>
-                <li><a href="{% url 'index' %}">Актеры</a></li>
+                <li><a href="/actor">Актеры</a></li>
+                <li><a href="/admin">Админ панель</a></li>
+                <li><a href="/register">Регистрация</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Выход</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>

@@ -1,12 +1,17 @@
 {% extends 'cinema/base.html' %}
 
-{% block title %}Home - My Cinema Site{% endblock %}
+{% block title %}Главная{% endblock %}
 
 {% block content %}
-    <h1>Список фильмов</h1>
-    <ul>
-        {% for movie in movies %}
-        <li><a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a></li>
-        {% endfor %}
-    </ul>
+<h2>Фильмы</h2>
+<ul>
+    {% for movie in movies %}
+        <li>
+            <img src="{{ movie.poster.url }}">
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.description }}</p>
+            <a href="{% url 'movie_sessions' movie.pk %}">Посмотреть сеансы</a>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

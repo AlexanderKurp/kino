@@ -1,0 +1,12 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Список Актеров - Кинотеатр{% endblock %}
+
+{% block content %}
+
+<h1>{{ actor.name }}</h1>
+<img src="{{ actor.foto.url }}" alt="{{ actor.name }}">
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Список Актеров - Кинотеатр{% endblock %}
+
+{% block content %}
+<h1>Список Актеров</h1>
+<div class="actors-container">
+    {% for actor in actors %}
+    <div class="actor-card">
+        <a href="{% url 'actor_detail' actor.pk %}">
+            <img src="{{ actor.foto.url }}" alt="{{ actor.name }}">
+            <p>{{ actor.name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

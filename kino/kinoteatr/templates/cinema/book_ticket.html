@@ -1,0 +1,16 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Бронирование билета{% endblock %}
+
+{% block content %}
+<h2>Бронирование билета</h2>
+<p><strong>Фильм:</strong> {{ session.movie.title }}</p>
+<p><strong>Время:</strong> {{ session.time }}</p>
+<p><strong>Зал:</strong> {{ session.hall }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Забронировать</button>
+</form>
+{% endblock %}
