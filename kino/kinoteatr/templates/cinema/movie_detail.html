@@ -1,19 +1,24 @@
 {% extends 'cinema/base.html' %}
 
-{% block title %}Детали сеанса{% endblock %}
+{% block title %}Детали Фильма: {{ movie.title }}{% endblock %}
 
 {% block content %}
-<h2>Детали сеанса</h2>
-<p><strong>Фильм:</strong> {{ session.movie.title }}</p>
-<p><strong>Время:</strong> {{ session.time }}</p>
-<p><strong>Зал:</strong> {{ session.hall }}</p>
+<div class="movie-details-container">
+    <h2>Детали Фильма:</h2>
+    <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster">
+    <p><strong>Фильм:</strong> {{ movie.title }}</p>
 
-<a href="{% url 'book_ticket' session.id %}">Забронировать билет</a>
-
-<h3>Забронированные места</h3>
-<ul>
-    {% for ticket in session.ticket_set.all %}
-        <li>{{ ticket.seat }} ({{ ticket.user.username }})</li>
-    {% endfor %}
-</ul>
+    <p><strong>Режиссер:</strong> {{ movie.director.name }}</p>
+    {% if movie.actor.exists %}
+        <p><strong>Актеры:</strong></p>
+        <ul>
+            {% for actor in movie.actor.all %}
+                <li>{{ actor.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p><strong>Актеры:</strong> Нет информации об актерах.</p>
+    {% endif %}
+    <p><strong>Краткое описание:</strong> {{ movie.description }}</p>
+</div>
 {% endblock %}

@@ -4,17 +4,17 @@
 
 {% block content %}
 <h2>Детали сеанса: </h2>
-
+<img src="{{ movie.poster.url }}">
 <p><strong>Фильм:</strong> {{ session.movie.title }}</p>
 <p><strong>Время:</strong> {{ session.time }}</p>
 <p><strong>Зал:</strong> {{ session.hall }}</p>
 
-<a href="{% url 'book_ticket' session.pk %}">Забронировать билет</a>
+<a href="{% url 'book_ticket' session.pk %}" class="movie-link">Забронировать билет</a>
 
 <h3>Забронированные места</h3>
 <ul>
     {% for ticket in session.ticket_set.all %}
-        <li>{{ ticket.seat }} ({{ ticket.user.username }})</li>
+    <li>{{ ticket.seat }} ({{ ticket.user.username }})</li>
     {% endfor %}
 </ul>
 {% endblock %}

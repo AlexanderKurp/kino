@@ -12,8 +12,8 @@
                 <div class="movie-details">
                     <h3>{{ movie.title }}</h3>
                     <p>{{ movie.description }}</p>
-                    <p>Жанр: {{ movie.genre }}</p>
-                    <p>Режиссер: {{ movie.director.name }}</p>
+                    <p><strong>Жанр:</strong> {{ movie.genre }}</p>
+                    <p><strong>Режиссер:</strong> {{ movie.director.name }}</p>
                     <a href="{% url 'movie_sessions' movie.pk %}" class="movie-link">Посмотреть сеансы</a>
                 </div>
             </li>
