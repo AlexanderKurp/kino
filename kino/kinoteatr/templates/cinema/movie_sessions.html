@@ -3,10 +3,11 @@
 {% block title %}Сеансы для {{ movie.title }}{% endblock %}
 
 {% block content %}
-<h2>Сеансы для {{ movie.title }}</h2>
+<h2>Сеансы для: {{ movie.title }}</h2>
 <ul>
     {% for session in sessions %}
         <li>
+            <img src="{{ movie.poster.url }}">
             <p><strong>Время:</strong> {{ session.time }}</p>
             <p><strong>Зал:</strong> {{ session.hall }}</p>
             <a href="{% url 'session_detail' session.pk %}">Подробнее</a>

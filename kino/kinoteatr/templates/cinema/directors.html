@@ -1,0 +1,17 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}Режиссеры{% endblock %}
+
+{% block content %}
+<h2>Список режиссеров</h2>
+<div class="directors-container">
+    {% for director in directors %}
+        <div class="director-card">
+            <a href="{% url 'director_detail' director.pk %}">
+                <img src="{{ director.foto.url }}" alt="{{ director.name }}">
+                <p>{{ director.name }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

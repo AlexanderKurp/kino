@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Movie, Session, Ticket, Actor
+from .models import Movie, Session, Ticket, Actor, Director
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -68,6 +68,15 @@ def actor_detail(request, pk):
 def actor_list(request):
     actors = Actor.objects.all()
     return render(request, 'cinema/actors.html', {'actors': actors})
+
+
+def director_list(request):
+    directors = Director.objects.all()
+    return render(request, 'cinema/directors.html', {'directors': directors})
+
+def director_detail(request, pk):
+    director = get_object_or_404(Director, pk=pk)
+    return render(request, 'cinema/director_detail.html', {'director': director})
 
 
 class RegisterUser(CreateView):

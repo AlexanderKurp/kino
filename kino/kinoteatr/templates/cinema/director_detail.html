@@ -1,0 +1,12 @@
+{% extends 'cinema/base.html' %}
+
+{% block title %}{{ director.name }}{% endblock %}
+
+{% block content %}
+    <div class="director-detail">
+
+        <h2>{{ director.name }}</h2>
+        <img src="{{ director.foto.url }}" alt="{{ director.name }}">
+
+    </div>
+{% endblock %}

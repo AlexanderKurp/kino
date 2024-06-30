@@ -4,14 +4,22 @@
 
 {% block content %}
 <h2>Фильмы</h2>
-<ul>
-    {% for movie in movies %}
-        <li>
-            <img src="{{ movie.poster.url }}">
-            <h3>{{ movie.title }}</h3>
-            <p>{{ movie.description }}</p>
-            <a href="{% url 'movie_sessions' movie.pk %}">Посмотреть сеансы</a>
-        </li>
-    {% endfor %}
-</ul>
+{% if movies %}
+    <ul class="movie-list">
+        {% for movie in movies %}
+            <li class="movie-item">
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" class="movie-poster">
+                <div class="movie-details">
+                    <h3>{{ movie.title }}</h3>
+                    <p>{{ movie.description }}</p>
+                    <p>Жанр: {{ movie.genre }}</p>
+                    <p>Режиссер: {{ movie.director.name }}</p>
+                    <a href="{% url 'movie_sessions' movie.pk %}" class="movie-link">Посмотреть сеансы</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Фильмы не найдены.</p>
+{% endif %}
 {% endblock %}
