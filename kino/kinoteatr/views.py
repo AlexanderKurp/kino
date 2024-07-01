@@ -74,6 +74,7 @@ def director_list(request):
     directors = Director.objects.all()
     return render(request, 'cinema/directors.html', {'directors': directors})
 
+
 def director_detail(request, pk):
     director = get_object_or_404(Director, pk=pk)
     return render(request, 'cinema/director_detail.html', {'director': director})

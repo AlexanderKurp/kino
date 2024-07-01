@@ -5,21 +5,21 @@
 {% block content %}
 <h2>Фильмы</h2>
 {% if movies %}
-    <ul class="movie-list">
-        {% for movie in movies %}
-            <li class="movie-item">
-                <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" class="movie-poster">
-                <div class="movie-details">
-                    <h3>{{ movie.title }}</h3>
-                    <p>{{ movie.description }}</p>
-                    <p><strong>Жанр:</strong> {{ movie.genre }}</p>
-                    <p><strong>Режиссер:</strong> {{ movie.director.name }}</p>
-                    <a href="{% url 'movie_sessions' movie.pk %}" class="movie-link">Посмотреть сеансы</a>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+<ul class="movie-list">
+    {% for movie in movies %}
+    <li class="movie-item">
+        <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" class="movie-poster">
+        <div class="movie-details">
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.description }}</p>
+            <p><strong>Жанр:</strong> {{ movie.genre }}</p>
+            <p><strong>Режиссер:</strong> <a href="/directors/{{ movie.director.pk }}">{{ movie.director.name }}</a></p>
+            <a href="{% url 'movie_sessions' movie.pk %}" class="movie-link">Посмотреть сеансы</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% else %}
-    <p>Фильмы не найдены.</p>
+<p>Фильмы не найдены.</p>
 {% endif %}
 {% endblock %}
